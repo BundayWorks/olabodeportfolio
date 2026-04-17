@@ -1,6 +1,6 @@
 export type Json = string | number | boolean | null | { [key: string]: Json } | Json[];
 
-export interface Database {
+export type Database = {
   public: {
     Tables: {
       commitments: {
@@ -132,8 +132,12 @@ export interface Database {
         };
       };
     };
+    Views: Record<string, never>;
+    Functions: Record<string, never>;
+    Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
   };
-}
+};
 
 // Convenience row types
 export type Commitment  = Database['public']['Tables']['commitments']['Row'];
@@ -142,6 +146,6 @@ export type Todo        = Database['public']['Tables']['todos']['Row'];
 export type Achievement = Database['public']['Tables']['achievements']['Row'];
 
 // With relations
-export type ProjectWithCommitment = Project & { commitments: Commitment };
-export type TodoWithRelations     = Todo & { commitments: Commitment | null; projects: Project | null };
+export type ProjectWithCommitment    = Project & { commitments: Commitment };
+export type TodoWithRelations        = Todo & { commitments: Commitment | null; projects: Project | null };
 export type AchievementWithRelations = Achievement & { commitments: Commitment | null; projects: Project | null };
