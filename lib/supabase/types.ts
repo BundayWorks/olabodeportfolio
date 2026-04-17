@@ -12,8 +12,22 @@ export interface Database {
           sort_order: number;
           created_at: string;
         };
-        Insert: Omit<Database['public']['Tables']['commitments']['Row'], 'id' | 'created_at'>;
-        Update: Partial<Database['public']['Tables']['commitments']['Insert']>;
+        Insert: {
+          id?: string;
+          user_id: string;
+          name: string;
+          color: string;
+          sort_order: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          name?: string;
+          color?: string;
+          sort_order?: number;
+          created_at?: string;
+        };
       };
       projects: {
         Row: {
@@ -24,8 +38,22 @@ export interface Database {
           sort_order: number;
           created_at: string;
         };
-        Insert: Omit<Database['public']['Tables']['projects']['Row'], 'id' | 'created_at'>;
-        Update: Partial<Database['public']['Tables']['projects']['Insert']>;
+        Insert: {
+          id?: string;
+          user_id: string;
+          commitment_id: string;
+          name: string;
+          sort_order: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          commitment_id?: string;
+          name?: string;
+          sort_order?: number;
+          created_at?: string;
+        };
       };
       todos: {
         Row: {
@@ -41,8 +69,32 @@ export interface Database {
           completed_at: string | null;
           created_at: string;
         };
-        Insert: Omit<Database['public']['Tables']['todos']['Row'], 'id' | 'created_at'>;
-        Update: Partial<Database['public']['Tables']['todos']['Insert']>;
+        Insert: {
+          id?: string;
+          user_id: string;
+          commitment_id?: string | null;
+          project_id?: string | null;
+          title: string;
+          notes?: string | null;
+          scope: 'day' | 'week';
+          due_date?: string | null;
+          status?: 'open' | 'completed' | 'archived';
+          completed_at?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          commitment_id?: string | null;
+          project_id?: string | null;
+          title?: string;
+          notes?: string | null;
+          scope?: 'day' | 'week';
+          due_date?: string | null;
+          status?: 'open' | 'completed' | 'archived';
+          completed_at?: string | null;
+          created_at?: string;
+        };
       };
       achievements: {
         Row: {
@@ -56,8 +108,28 @@ export interface Database {
           date: string;
           created_at: string;
         };
-        Insert: Omit<Database['public']['Tables']['achievements']['Row'], 'id' | 'created_at'>;
-        Update: Partial<Database['public']['Tables']['achievements']['Insert']>;
+        Insert: {
+          id?: string;
+          user_id: string;
+          commitment_id?: string | null;
+          project_id?: string | null;
+          source_todo_id?: string | null;
+          title: string;
+          notes?: string | null;
+          date: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          commitment_id?: string | null;
+          project_id?: string | null;
+          source_todo_id?: string | null;
+          title?: string;
+          notes?: string | null;
+          date?: string;
+          created_at?: string;
+        };
       };
     };
   };
