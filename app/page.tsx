@@ -1,65 +1,87 @@
-import Image from "next/image";
+import Nav from '@/components/Nav';
+import CertModal from '@/components/CertModal';
+import CaseStudies from '@/components/CaseStudies';
+import Footer from '@/components/Footer';
+import ScrollEffects from '@/components/ScrollEffects';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Nav />
+
+      {/* HERO */}
+      <section className="hero container fade-in">
+        <p className="hero__label">PRODUCT &amp; TRANSFORMATION LEADER</p>
+        <h1 className="hero__headline">
+          I&apos;m Olabode — I don&apos;t just ship products.<br />
+          I make sure <span className="underline">people actually use them.</span>
+        </h1>
+        <p className="hero__sub">
+          12+ years building products and leading change across fintech, government, health, and
+          logistics in West Africa. I work at the intersection of product strategy, customer
+          experience design, and agile delivery — from first insight to lasting adoption.
+        </p>
+        <a href="#work" className="hero__cta">SEE MY WORK &rarr;</a>
+
+        {/* Cert badges + modal rendered together as a client component */}
+        <CertModal />
+      </section>
+
+      {/* CASE STUDIES */}
+      <CaseStudies />
+
+      {/* OTHER WORK */}
+      <section className="other-work container">
+        <div className="other-work__grid">
+          <div className="other-work__item fade-in">
+            <h4>Treasury Management System</h4>
+            <p>Designed and deployed a Treasury Single Account Management System for Sierra Leone&apos;s Ministry of Finance — enhancing financial oversight and restoring stakeholder confidence.</p>
+          </div>
+          <div className="other-work__item fade-in">
+            <h4>Cross-functional Team Leadership</h4>
+            <p>Directed teams of up to 12 — PMs, designers, and engineers — across six-year product programmes with extremely low staff turnover.</p>
+          </div>
+          <div className="other-work__item fade-in">
+            <h4>Porchplus — Proptech Advisory</h4>
+            <p>Provided strategic product guidance for a property management startup: 200+ daily active users in month one and accepted into a top accelerator programme.</p>
+          </div>
+          <div className="other-work__item fade-in">
+            <h4>Agile Process Improvement</h4>
+            <p>Implemented CI/CD and agile delivery frameworks at Vatebra — reducing release turnaround times by 40% across multiple deployment environments.</p>
+          </div>
+          <div className="other-work__item fade-in">
+            <h4>Talent &amp; Internship Programme</h4>
+            <p>Established an internship pipeline at Inlaks that cultivated emerging product talent — contributing to team growth while managing costs.</p>
+          </div>
+          <div className="other-work__item fade-in">
+            <h4>Africa Code Week — Google Grant</h4>
+            <p>3&times; Google Grant Award Winner (2017–2019) as Programme Manager at Codespark Foundation, coordinating schools, government agencies, and corporate sponsors including SAP.</p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="about container fade-in">
+        <div className="about__copy">
+          <h2>About me</h2>
+          <p>I&apos;m Olabode — a product and transformation leader with 12+ years building and scaling software products across financial services, government, health, and logistics in West and Central Africa.</p>
+          <p>What sets me apart is how I think about adoption, not just delivery. I&apos;ve learned that the best product in the world fails if it doesn&apos;t change how people work. So I design for behaviour change from the start — mapping customer journeys, engaging stakeholders early, and measuring outcomes beyond go-live.</p>
+          <p>I hold a First Class degree in Computer Science, a Lean Six Sigma Black Belt, a Professional Scrum Master certification, and I&apos;m currently completing Product Strategy at Kellogg Executive Education. I lead with data, move with urgency, and build with people in mind.</p>
         </div>
-      </main>
-    </div>
+        <div className="about__skills">
+          {[
+            'Product Strategy', 'Customer Journey Mapping', 'Stakeholder Management',
+            'Agile / Scrum (PSM I)', 'Process Improvement', 'Lean Six Sigma Black Belt',
+            'Data-Driven Decision Making', 'Cross-functional Leadership', 'OKRs & Metrics',
+            'Design Thinking', 'Roadmapping', 'JIRA · Figma · Power BI',
+          ].map(skill => (
+            <div key={skill} className="skill-tag">{skill}</div>
+          ))}
+        </div>
+      </section>
+
+      <Footer />
+      <ScrollEffects />
+    </>
   );
 }
