@@ -186,7 +186,7 @@ export default function TodosClient({ initialTodos, commitments }: Props) {
           {commitments.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
         </select>
         {selectedDate && (
-          <button className="filter-chip" onClick={() => setSelectedDate('')} style={{ color: 'var(--admin-blue)', borderColor: 'var(--admin-blue)' }}>
+          <button className="filter-chip" onClick={() => setSelectedDate('')} style={{ color: 'var(--a-blue)', borderColor: 'var(--a-blue)' }}>
             {selectedDate === today ? 'Today' : selectedDate} ✕
           </button>
         )}
@@ -231,7 +231,7 @@ export default function TodosClient({ initialTodos, commitments }: Props) {
                 )}
               </div>
               {todo.notes && (
-                <p style={{ fontSize: '0.78rem', color: 'var(--admin-text-3)', marginTop: '0.3rem', lineHeight: 1.5 }}>{todo.notes}</p>
+                <p style={{ fontSize: '0.78rem', color: 'var(--a-text3)', marginTop: '0.3rem', lineHeight: 1.5 }}>{todo.notes}</p>
               )}
             </div>
             <div style={{ display: 'flex', gap: '0.15rem', flexShrink: 0 }}>

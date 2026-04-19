@@ -67,9 +67,9 @@ export default function ReportsClient({ todos, achievements, commitments }: Prop
       </div>
 
       {/* Filters */}
-      <div className="admin-card admin-card--padded" style={{ marginBottom: '1.5rem' }}>
-        <div style={{ display: 'flex', gap: '0.875rem', flexWrap: 'wrap', alignItems: 'flex-end' }}>
-          <div className="form-field" style={{ flex: 1, minWidth: 140 }}>
+      <div className="admin-card admin-card--padded" style={{ marginBottom: '1.25rem' }}>
+        <div className="form-grid">
+          <div className="form-field">
             <label className="form-label">Commitment</label>
             <select className="form-input" value={filterCommitment}
               onChange={e => { setFilterCommitment(e.target.value); setFilterProject(''); }}>
@@ -77,7 +77,7 @@ export default function ReportsClient({ todos, achievements, commitments }: Prop
               {commitments.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
             </select>
           </div>
-          <div className="form-field" style={{ flex: 1, minWidth: 140 }}>
+          <div className="form-field">
             <label className="form-label">Project</label>
             <select className="form-input" value={filterProject}
               onChange={e => setFilterProject(e.target.value)} disabled={!filterCommitment}>
@@ -85,29 +85,30 @@ export default function ReportsClient({ todos, achievements, commitments }: Prop
               {(selectedCommitment?.projects ?? []).map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
             </select>
           </div>
-          <div className="form-field" style={{ minWidth: 140 }}>
+          <div className="form-field">
             <label className="form-label">From</label>
             <input type="date" className="form-input" value={dateFrom} onChange={e => setDateFrom(e.target.value)} />
           </div>
-          <div className="form-field" style={{ minWidth: 140 }}>
+          <div className="form-field">
             <label className="form-label">To</label>
             <input type="date" className="form-input" value={dateTo} onChange={e => setDateTo(e.target.value)} />
           </div>
-          {hasFilters && (
-            <button className="btn btn-secondary" onClick={() => { setFilterCommitment(''); setFilterProject(''); setDateFrom(''); setDateTo(''); }}>
-              Clear
-            </button>
-          )}
         </div>
+        {hasFilters && (
+          <button className="btn btn-secondary" onClick={() => { setFilterCommitment(''); setFilterProject(''); setDateFrom(''); setDateTo(''); }}
+            style={{ marginTop: '0.75rem', width: '100%' }}>
+            Clear filters
+          </button>
+        )}
       </div>
 
-      {/* Summary stats */}
-      <div className="admin-stats reports-stats" style={{ gridTemplateColumns: 'repeat(4,1fr)' }}>
+      {/* Summary stats — 2x2 on mobile, 4-col on desktop */}
+      <div className="admin-stats" style={{ gridTemplateColumns: 'repeat(2,1fr)' }}>
         {[
-          { label: 'Open todos', value: openTodos.length, color: 'var(--admin-blue)' },
-          { label: 'Completed', value: completedTodos.length, color: 'var(--admin-green)' },
-          { label: 'Achievements', value: filteredAchievements.length, color: 'var(--admin-amber)' },
-          { label: 'Completion', value: `${completionRate}%`, color: 'var(--admin-purple)' },
+          { label: 'Open todos', value: openTodos.length, color: 'var(--a-blue)' },
+          { label: 'Completed', value: completedTodos.length, color: 'var(--a-green)' },
+          { label: 'Achievements', value: filteredAchievements.length, color: 'var(--a-amber)' },
+          { label: 'Completion', value: `${completionRate}%`, color: 'var(--a-purple)' },
         ].map(s => (
           <div key={s.label} className="admin-stat">
             <div className="admin-stat__value" style={{ color: s.color, fontSize: '1.5rem' }}>{s.value}</div>
@@ -121,12 +122,12 @@ export default function ReportsClient({ todos, achievements, commitments }: Prop
         <div className="admin-card admin-card--padded" style={{ marginBottom: '1.25rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
             <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>Overall completion</span>
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--admin-green)' }}>{completionRate}%</span>
+            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--a-green)' }}>{completionRate}%</span>
           </div>
           <div className="progress-bar">
-            <div className="progress-bar__fill" style={{ width: `${completionRate}%`, background: 'var(--admin-green)' }} />
+            <div className="progress-bar__fill" style={{ width: `${completionRate}%`, background: 'var(--a-green)' }} />
           </div>
-          <p style={{ fontSize: '0.72rem', color: 'var(--admin-text-3)', marginTop: '0.4rem' }}>
+          <p style={{ fontSize: '0.72rem', color: 'var(--a-text3)', marginTop: '0.4rem' }}>
             {completedTodos.length} of {filteredTodos.length} todos completed
           </p>
         </div>
@@ -135,7 +136,7 @@ export default function ReportsClient({ todos, achievements, commitments }: Prop
       {/* Commitment breakdown */}
       {!filterCommitment && (
         <div className="admin-card" style={{ marginBottom: '1.25rem', overflow: 'hidden' }}>
-          <div style={{ padding: '1rem 1.25rem', borderBottom: '1px solid var(--admin-border)' }}>
+          <div style={{ padding: '1rem 1.25rem', borderBottom: '1px solid var(--a-border)' }}>
             <span style={{ fontSize: '0.9rem', fontWeight: 700 }}>By commitment</span>
           </div>
           <div className="report-table-wrap">
@@ -158,15 +159,15 @@ export default function ReportsClient({ todos, achievements, commitments }: Prop
                       {c.name}
                     </div>
                   </td>
-                  <td style={{ color: 'var(--admin-blue)', fontWeight: 600 }}>{c.open}</td>
-                  <td style={{ color: 'var(--admin-green)', fontWeight: 600 }}>{c.completed}</td>
-                  <td style={{ color: 'var(--admin-amber)', fontWeight: 600 }}>{c.achievements}</td>
+                  <td style={{ color: 'var(--a-blue)', fontWeight: 600 }}>{c.open}</td>
+                  <td style={{ color: 'var(--a-green)', fontWeight: 600 }}>{c.completed}</td>
+                  <td style={{ color: 'var(--a-amber)', fontWeight: 600 }}>{c.achievements}</td>
                   <td>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <div style={{ flex: 1, height: 6, background: 'var(--admin-bg)', borderRadius: 3, minWidth: 50, overflow: 'hidden' }}>
-                        <div style={{ height: '100%', width: `${c.rate}%`, background: 'var(--admin-green)', borderRadius: 3 }} />
+                      <div style={{ flex: 1, height: 6, background: 'var(--a-bg)', borderRadius: 3, minWidth: 50, overflow: 'hidden' }}>
+                        <div style={{ height: '100%', width: `${c.rate}%`, background: 'var(--a-green)', borderRadius: 3 }} />
                       </div>
-                      <span style={{ fontSize: '0.75rem', color: 'var(--admin-text-2)', width: 32, textAlign: 'right' }}>{c.rate}%</span>
+                      <span style={{ fontSize: '0.75rem', color: 'var(--a-text2)', width: 32, textAlign: 'right' }}>{c.rate}%</span>
                     </div>
                   </td>
                 </tr>
@@ -180,7 +181,7 @@ export default function ReportsClient({ todos, achievements, commitments }: Prop
       {/* Recent achievements */}
       {filteredAchievements.length > 0 && (
         <div className="admin-card" style={{ overflow: 'hidden' }}>
-          <div style={{ padding: '1rem 1.25rem', borderBottom: '1px solid var(--admin-border)' }}>
+          <div style={{ padding: '1rem 1.25rem', borderBottom: '1px solid var(--a-border)' }}>
             <span style={{ fontSize: '0.9rem', fontWeight: 700 }}>Achievements ({filteredAchievements.length})</span>
           </div>
           <div style={{ padding: '0.75rem 1.25rem' }}>

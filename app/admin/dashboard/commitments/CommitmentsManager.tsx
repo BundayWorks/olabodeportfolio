@@ -105,7 +105,7 @@ export default function CommitmentsManager({ initialCommitments }: Props) {
                 <span className="commitment-card__name">{commitment.name}</span>
                 <span className="commitment-card__count">{commitment.projects.length} project{commitment.projects.length !== 1 ? 's' : ''}</span>
               </div>
-              <button onClick={() => deleteCommitment(commitment.id)} className="btn-icon" style={{ color: 'var(--admin-red)', fontSize: '0.8rem' }}>
+              <button onClick={() => deleteCommitment(commitment.id)} className="btn-icon" style={{ color: 'var(--a-red)', fontSize: '0.8rem' }}>
                 Remove
               </button>
             </div>
@@ -172,9 +172,9 @@ export default function CommitmentsManager({ initialCommitments }: Props) {
             </div>
 
             {/* Preview */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.75rem 1rem', background: 'var(--admin-bg)', borderRadius: '8px', marginBottom: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.75rem 1rem', background: 'var(--a-bg)', borderRadius: '8px', marginBottom: '1.25rem' }}>
               <span style={{ width: 10, height: 10, borderRadius: '50%', background: newCommitment.color, display: 'inline-block' }} />
-              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: newCommitment.name ? 'var(--admin-text)' : 'var(--admin-text-3)' }}>
+              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: newCommitment.name ? 'var(--a-text)' : 'var(--a-text3)' }}>
                 {newCommitment.name || 'Preview…'}
               </span>
             </div>

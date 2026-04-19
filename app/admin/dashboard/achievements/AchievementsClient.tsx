@@ -92,20 +92,20 @@ export default function AchievementsClient({ initialAchievements, commitments }:
       </div>
 
       {/* Stats row */}
-      <div style={{ display: 'flex', gap: '0.875rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-        <div className="admin-card admin-card--padded" style={{ flex: 1, minWidth: 120 }}>
-          <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--admin-amber)', lineHeight: 1 }}>{achievements.length}</div>
-          <div style={{ fontSize: '0.78rem', color: 'var(--admin-text-2)', marginTop: '0.3rem' }}>Total wins</div>
+      <div className="admin-stats">
+        <div className="admin-stat">
+          <div className="admin-stat__value" style={{ color: 'var(--a-amber)' }}>{achievements.length}</div>
+          <div className="admin-stat__label">Total wins</div>
         </div>
-        <div className="admin-card admin-card--padded" style={{ flex: 1, minWidth: 120 }}>
-          <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--admin-blue)', lineHeight: 1 }}>{months.length}</div>
-          <div style={{ fontSize: '0.78rem', color: 'var(--admin-text-2)', marginTop: '0.3rem' }}>Active months</div>
+        <div className="admin-stat">
+          <div className="admin-stat__value" style={{ color: 'var(--a-blue)' }}>{months.length}</div>
+          <div className="admin-stat__label">Months</div>
         </div>
-        <div className="admin-card admin-card--padded" style={{ flex: 1, minWidth: 120 }}>
-          <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--admin-purple)', lineHeight: 1 }}>
+        <div className="admin-stat">
+          <div className="admin-stat__value" style={{ color: 'var(--a-purple)' }}>
             {achievements.filter(a => a.source_todo_id).length}
           </div>
-          <div style={{ fontSize: '0.78rem', color: 'var(--admin-text-2)', marginTop: '0.3rem' }}>From todos</div>
+          <div className="admin-stat__label">From todos</div>
         </div>
       </div>
 
@@ -154,7 +154,7 @@ export default function AchievementsClient({ initialAchievements, commitments }:
                     )}
                   </div>
                   {achievement.notes && (
-                    <p style={{ fontSize: '0.78rem', color: 'var(--admin-text-3)', marginTop: '0.3rem', lineHeight: 1.5 }}>
+                    <p style={{ fontSize: '0.78rem', color: 'var(--a-text3)', marginTop: '0.3rem', lineHeight: 1.5 }}>
                       {achievement.notes}
                     </p>
                   )}
