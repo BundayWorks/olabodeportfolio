@@ -78,9 +78,9 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
     slug: 'taxspire',
     tag: 'Regtech · Fintech · 0→1 · Nigeria',
-    title: "Building Nigeria's first consumer tax platform — ₦2M revenue in month one.",
+    title: "Building Nigeria's first consumer tax platform — ₦25M+ revenue in month one.",
     description:
-      "Joined SpireCore as founding product lead to build Taxspire — Nigeria's first accessible, digital-first tax compliance platform for entrepreneurs and SMEs. In six months, with two engineers, we launched five product modules including tax profiling, business registration, invoicing, and advisory booking, generating ₦2M+ in our first month of trading.",
+      "Joined SpireCore as founding product lead to build Taxspire — Nigeria's first accessible, digital-first tax compliance platform for entrepreneurs and SMEs. In six months, with two engineers, we launched five product modules including tax profiling, business registration, invoicing, and advisory booking, generating ₦25M+ in our first month of trading.",
     bgColor: '#fce8d5',
     visualType: 'window',
     layout: 'left',
@@ -152,14 +152,14 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: 'taxspire',
     tag: 'Regtech · Fintech · 0→1 · SpireCore',
     title:
-      "Building Nigeria's first consumer tax platform — from a blank page to ₦2M revenue in month one.",
+      "Building Nigeria's first consumer tax platform — from a blank page to ₦25M+ revenue in month one.",
     summary:
       "Taxspire is SpireCore's flagship product: a Nigerian-first platform that automates tax compliance, business registration, and financial advisory for entrepreneurs, freelancers, and SMEs. I joined as the founding product lead — not just as a PM, but as a builder, strategist, and growth driver. In six months, with a team of two engineers, we launched multiple product modules, generated our first revenue within weeks, and built a growth engine that compounded from day one.",
     meta: [
       { label: 'Role', value: 'Head of Product & Growth (Founding)' },
       { label: 'Company', value: 'SpireCore (Taxspire) · 2025–Present' },
       { label: 'Focus Areas', value: '0→1 Product · Growth Strategy · CX Design · Regulatory Navigation' },
-      { label: 'Outcome', value: '₦2M+ revenue · Month-one launch · Multiple live modules' },
+      { label: 'Outcome', value: '₦25M+ revenue · Month-one launch · Multiple live modules' },
     ],
     tabs: [
       '01 · Context & Entry',
@@ -258,12 +258,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         number: 'Step 06 — Outcomes',
-        heading: '₦2M in month one. A platform still accelerating.',
+        heading: '₦25M+ in month one. A platform still accelerating.',
         body: [
           {
             type: 'outcomeGrid',
             items: [
-              { stat: '₦2M+', label: 'Revenue generated within the first month of launch' },
+              { stat: '₦25M+', label: 'Revenue generated within the first month of launch' },
               { stat: '6 mo.', label: 'From blank page to live multi-module platform with paying customers' },
               { stat: '2 eng.', label: 'Full platform shipped by one frontend and one backend engineer' },
               { stat: '5+', label: 'Live product modules: tax profile, business registration, invoicing, advisory, TCC' },
