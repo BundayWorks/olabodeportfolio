@@ -77,7 +77,7 @@ export default async function OverviewPage() {
         </div>
       )}
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      <div className="overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
         {/* Open todos */}
         <div className="admin-card" style={{ gridColumn: recentAchievements?.length === 0 ? '1/-1' : undefined }}>
           <div style={{ padding: '1rem 1.25rem 0.75rem', borderBottom: '1px solid var(--admin-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

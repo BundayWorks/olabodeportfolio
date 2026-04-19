@@ -102,7 +102,7 @@ export default function ReportsClient({ todos, achievements, commitments }: Prop
       </div>
 
       {/* Summary stats */}
-      <div className="admin-stats" style={{ gridTemplateColumns: 'repeat(4,1fr)' }}>
+      <div className="admin-stats reports-stats" style={{ gridTemplateColumns: 'repeat(4,1fr)' }}>
         {[
           { label: 'Open todos', value: openTodos.length, color: 'var(--admin-blue)' },
           { label: 'Completed', value: completedTodos.length, color: 'var(--admin-green)' },
@@ -138,7 +138,8 @@ export default function ReportsClient({ todos, achievements, commitments }: Prop
           <div style={{ padding: '1rem 1.25rem', borderBottom: '1px solid var(--admin-border)' }}>
             <span style={{ fontSize: '0.9rem', fontWeight: 700 }}>By commitment</span>
           </div>
-          <table className="report-table">
+          <div className="report-table-wrap">
+            <table className="report-table">
             <thead>
               <tr>
                 <th>Commitment</th>
@@ -171,7 +172,8 @@ export default function ReportsClient({ todos, achievements, commitments }: Prop
                 </tr>
               ))}
             </tbody>
-          </table>
+            </table>
+          </div>
         </div>
       )}
 

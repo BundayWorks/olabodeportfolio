@@ -195,7 +195,6 @@
 
 /* ── Mobile drawer ── */
 .admin-drawer-overlay {
-  display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.5);
@@ -924,21 +923,72 @@ textarea.form-input { resize: vertical; min-height: 72px; }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
+  /* Nav */
   .admin-sidebar { display: none; }
   .admin-topbar { display: flex; }
   .admin-bottom-nav { display: block; }
   .btn-fab { display: flex; }
-  .admin-page { padding: 1.25rem 1rem 7rem; }
-  .admin-stats { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-  .admin-stat { padding: 0.875rem; }
+
+  /* Page layout */
+  .admin-page {
+    padding: 1.25rem 1rem calc(80px + env(safe-area-inset-bottom) + 1rem);
+  }
+  .admin-page-header { flex-direction: column; gap: 0.6rem; }
+  .admin-page-header .btn { width: 100%; justify-content: center; }
+
+  /* Stats */
+  .admin-stats { gap: 0.5rem; }
+  .admin-stat { padding: 0.875rem 0.75rem; }
   .admin-stat__value { font-size: 1.5rem; }
+  .admin-stat__label { font-size: 0.7rem; }
+
+  /* Forms */
   .form-grid { grid-template-columns: 1fr; }
   .form-grid .full { grid-column: 1; }
-  .admin-page-header { flex-direction: column; gap: 0.75rem; }
-  .admin-page-header .btn { width: 100%; justify-content: center; }
+  .form-input { font-size: 1rem; padding: 0.75rem 0.9rem; } /* prevent iOS zoom */
+
+  /* Sheet */
+  .sheet { padding: 1.25rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom)); }
+
+  /* Buttons — bigger tap targets */
+  .btn { padding: 0.75rem 1.1rem; min-height: 44px; }
+  .btn-icon { padding: 0.5rem; min-width: 36px; min-height: 36px; justify-content: center; }
+  .filter-chip { padding: 0.45rem 0.9rem; min-height: 36px; }
+
+  /* Todo items */
+  .todo-item { padding: 0.875rem; }
+  .todo-checkbox { width: 22px; height: 22px; }
+
+  /* Achievement items */
+  .achieve-item { padding: 0.875rem; }
+
+  /* Overview two-col grid → single col */
+  .overview-grid { grid-template-columns: 1fr !important; }
+
+  /* Reports stats → 2x2 */
+  .reports-stats { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Reports table — scrollable */
+  .report-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .report-table { min-width: 480px; }
+
+  /* Week calendar */
+  .week-calendar__title { font-size: 0.875rem; }
+  .week-day__name { font-size: 0.58rem; }
+  .week-day__num { width: 28px; height: 28px; font-size: 0.8rem; }
+
+  /* Commitment card */
+  .commitment-card__header { flex-wrap: wrap; gap: 0.5rem; }
 }
 
-@media (max-width: 480px) {
-  .admin-stats { grid-template-columns: repeat(3, 1fr); }
-  .week-day__num { width: 26px; height: 26px; font-size: 0.8rem; }
+@media (max-width: 400px) {
+  .admin-stats { grid-template-columns: repeat(3, 1fr); gap: 0.35rem; }
+  .admin-stat { padding: 0.65rem 0.5rem; }
+  .admin-stat__value { font-size: 1.25rem; }
+  .admin-stat__label { font-size: 0.65rem; }
+  .week-day__num { width: 24px; height: 24px; font-size: 0.75rem; }
+  .week-calendar__days { padding: 0.5rem 0.25rem; gap: 0.1rem; }
+  .admin-page { padding-left: 0.75rem; padding-right: 0.75rem; }
+  .admin-bottom-tab { font-size: 0.55rem; }
+  .admin-bottom-tab__icon { font-size: 1rem; }
 }
