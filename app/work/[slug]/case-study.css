@@ -5,9 +5,9 @@
 /* NAV */
 .cs-nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(255,255,255,0.92);
+  background: color-mix(in srgb, var(--white) 92%, transparent);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,7 +33,7 @@
 
 /* HERO BAND */
 .cs-hero {
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid var(--border);
   padding: 5rem var(--pad-x) 4rem;
   max-width: var(--cs-max-w);
   margin: 0 auto;
@@ -85,7 +85,7 @@
   top: 58px;
   z-index: 90;
   background: var(--white);
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid var(--border);
   padding: 0 var(--pad-x);
   overflow-x: auto;
   white-space: nowrap;
@@ -130,7 +130,7 @@
 /* STEP SECTIONS */
 .cs-step {
   padding: 4rem 0 3rem;
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid var(--border);
   display: none;
 }
 .cs-step.active { display: block; }
@@ -230,7 +230,7 @@
   align-items: center;
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid #ebebeb;
+  border-top: 1px solid var(--border);
 }
 .cs-step-btn {
   font-size: 0.8rem;
