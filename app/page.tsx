@@ -11,17 +11,26 @@ export default function Home() {
 
       {/* HERO */}
       <section className="hero container fade-in">
-        <p className="hero__label">PRODUCT &amp; TRANSFORMATION LEADER</p>
-        <h1 className="hero__headline">
-          I&apos;m Olabode — I don&apos;t just ship products.<br />
-          I make sure <span className="underline">people actually use them.</span>
-        </h1>
-        <p className="hero__sub">
-          12+ years building products and leading change across fintech, government, health, and
-          logistics in West Africa. I work at the intersection of product strategy, customer
-          experience design, and agile delivery — from first insight to lasting adoption.
-        </p>
-        <a href="#work" className="hero__cta">SEE MY WORK &rarr;</a>
+        <div className="hero__grid">
+          <div className="hero__copy">
+            <p className="hero__label">PRODUCT &amp; TRANSFORMATION LEADER</p>
+            <h1 className="hero__headline">
+              I&apos;m Olabode — I don&apos;t just ship products.<br />
+              I make sure <span className="underline">people actually use them.</span>
+            </h1>
+            <p className="hero__sub">
+              12+ years building products and leading change across fintech, government, health, and
+              logistics in West Africa. I work at the intersection of product strategy, customer
+              experience design, and agile delivery — from first insight to lasting adoption.
+            </p>
+            <a href="#work" className="hero__cta">SEE MY WORK &rarr;</a>
+          </div>
+          <div className="hero__visual">
+            <div className="hero__visual-frame">
+              <img src="/assets/Hero Image.png" alt="Olabode Ogunfuye" className="hero__image" />
+            </div>
+          </div>
+        </div>
 
         {/* Cert badges + modal rendered together as a client component */}
         <CertModal />

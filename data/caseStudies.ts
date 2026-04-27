@@ -72,6 +72,7 @@ export interface CaseStudyCard {
   bgColor: string;
   visualType: 'window' | 'emoji' | 'chat' | 'board' | 'icons' | 'chart';
   layout: 'left' | 'right';
+  image?: { src: string; alt: string; position?: string };
 }
 
 export const CASE_STUDY_CARDS: CaseStudyCard[] = [
@@ -84,6 +85,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     bgColor: '#fce8d5',
     visualType: 'window',
     layout: 'left',
+    image: { src: '/assets/Taxspire Team.jpeg', alt: 'Taxspire team' },
   },
   {
     slug: 'cpay',
@@ -104,6 +106,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     bgColor: '#e8eaf6',
     visualType: 'emoji',
     layout: 'right',
+    image: { src: '/assets/Audit Followup - Sierra LEone.jpeg', alt: 'Audit follow-up session in Sierra Leone' },
   },
   {
     slug: 'sunu',
@@ -114,6 +117,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     bgColor: '#fff8e1',
     visualType: 'chat',
     layout: 'left',
+    image: { src: '/assets/SUNU Health Insurance.jpeg', alt: 'SUNU Health Insurance team', position: 'right center' },
   },
   {
     slug: 'hmis',
@@ -144,6 +148,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     bgColor: '#f3e5f5',
     visualType: 'chart',
     layout: 'right',
+    image: { src: '/assets/CPay Brainstorming.jpeg', alt: 'CPay team brainstorming session' },
   },
 ];
 

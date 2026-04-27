@@ -2,7 +2,27 @@ import type { CaseStudyCard } from '@/data/caseStudies';
 
 type VisualType = CaseStudyCard['visualType'];
 
-export default function CaseStudyVisual({ type, bgColor }: { type: VisualType; bgColor: string }) {
+export default function CaseStudyVisual({
+  type,
+  bgColor,
+  image,
+}: {
+  type: VisualType;
+  bgColor: string;
+  image?: { src: string; alt: string; position?: string };
+}) {
+  if (image) {
+    return (
+      <div className="case-study__image-wrap" style={{ background: bgColor }}>
+        <img
+          src={image.src}
+          alt={image.alt}
+          className="case-study__image"
+          style={image.position ? { objectPosition: image.position } : undefined}
+        />
+      </div>
+    );
+  }
   return (
     <div className="case-study__placeholder" style={{ background: bgColor, width: '100%', height: '100%' }}>
       {type === 'window' && (

@@ -13,7 +13,7 @@ export default function CaseStudies() {
           {card.layout === 'left' ? (
             <>
               <Link href={`/work/${card.slug}`} className="case-study__visual" style={{ background: card.bgColor }}>
-                <CaseStudyVisual type={card.visualType} bgColor={card.bgColor} />
+                <CaseStudyVisual type={card.visualType} bgColor={card.bgColor} image={card.image} />
               </Link>
               <div className="case-study__copy">
                 <p className="cs-tag">{card.tag}</p>
@@ -39,7 +39,7 @@ export default function CaseStudies() {
                 <Link href={`/work/${card.slug}`} className="link">View &rarr;</Link>
               </div>
               <Link href={`/work/${card.slug}`} className="case-study__visual" style={{ background: card.bgColor }}>
-                <CaseStudyVisual type={card.visualType} bgColor={card.bgColor} />
+                <CaseStudyVisual type={card.visualType} bgColor={card.bgColor} image={card.image} />
               </Link>
             </>
           )}
