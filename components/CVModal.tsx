@@ -4,10 +4,21 @@ import { createPortal } from 'react-dom';
 
 const CV_URL = '/assets/Olabode_Ogunfuye_CV.pdf';
 const CV_FILENAME = 'Olabode_Ogunfuye_CV.pdf';
+const OPEN_EVENT = 'open-cv-modal';
 
 function isMobileViewport() {
   if (typeof window === 'undefined') return false;
   return window.innerWidth <= 700;
+}
+
+// Public trigger — call from anywhere in the app to open the modal
+export function openCVModal() {
+  if (typeof window === 'undefined') return;
+  if (isMobileViewport()) {
+    window.open(CV_URL, '_blank', 'noopener,noreferrer');
+    return;
+  }
+  window.dispatchEvent(new Event(OPEN_EVENT));
 }
 
 export default function CVModal() {
@@ -28,14 +39,14 @@ export default function CVModal() {
     document.body.style.overflow = '';
   }, []);
 
-  const openModal = () => {
+  const openModal = useCallback(() => {
     if (isMobile) {
       window.open(CV_URL, '_blank', 'noopener,noreferrer');
       return;
     }
     setOpen(true);
     document.body.style.overflow = 'hidden';
-  };
+  }, [isMobile]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -44,6 +55,13 @@ export default function CVModal() {
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
   }, [open, close]);
+
+  // Listen for cross-component open requests (e.g. from Nav)
+  useEffect(() => {
+    const handler = () => openModal();
+    window.addEventListener(OPEN_EVENT, handler);
+    return () => window.removeEventListener(OPEN_EVENT, handler);
+  }, [openModal]);
 
   const modal = (
     <div className={`cv-modal${open ? ' open' : ''}`} role="dialog" aria-modal="true" aria-label="CV viewer">

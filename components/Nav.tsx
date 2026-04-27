@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { openCVModal } from './CVModal';
 
 function SunIcon() {
   return (
@@ -53,6 +54,13 @@ export default function Nav() {
         <nav className={`nav__links${open ? ' open' : ''}`}>
           <a href="#work" onClick={() => setOpen(false)}>Work</a>
           <a href="#about" onClick={() => setOpen(false)}>About</a>
+          <button
+            type="button"
+            className="nav__cv-link"
+            onClick={() => { setOpen(false); openCVModal(); }}
+          >
+            CV
+          </button>
           <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
         </nav>
         <button
