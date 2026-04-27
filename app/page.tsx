@@ -1,5 +1,6 @@
 import Nav from '@/components/Nav';
 import CertModal from '@/components/CertModal';
+import CVModal from '@/components/CVModal';
 import CaseStudies from '@/components/CaseStudies';
 import Footer from '@/components/Footer';
 import ScrollEffects from '@/components/ScrollEffects';
@@ -23,7 +24,10 @@ export default function Home() {
               logistics in West Africa. I work at the intersection of product strategy, customer
               experience design, and agile delivery — from first insight to lasting adoption.
             </p>
-            <a href="#work" className="hero__cta">SEE MY WORK &rarr;</a>
+            <div className="hero__cta-row">
+              <a href="#work" className="hero__cta">SEE MY WORK &rarr;</a>
+              <CVModal />
+            </div>
           </div>
           <div className="hero__visual">
             <div className="hero__visual-frame">
