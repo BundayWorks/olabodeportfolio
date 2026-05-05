@@ -1,8 +1,0 @@
-{
-  "crons": [
-    {
-      "path": "/api/sync/google-tasks",
-      "schedule": "0 6 * * *"
-    }
-  ]
-}
