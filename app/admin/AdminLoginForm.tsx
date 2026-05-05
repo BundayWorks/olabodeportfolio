@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 
 export default function AdminLoginForm() {
@@ -51,10 +52,15 @@ export default function AdminLoginForm() {
         width: '100%', padding: '0.75rem', background: '#111', color: '#fff',
         border: 'none', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 600,
         letterSpacing: '0.06em', cursor: loading ? 'default' : 'pointer',
-        opacity: loading ? 0.6 : 1, fontFamily: 'inherit',
+        opacity: loading ? 0.6 : 1, fontFamily: 'inherit', marginBottom: '1.25rem',
       }}>
         {loading ? 'Signing in…' : 'Sign in'}
       </button>
+      <Link href="/admin/forgot-password" style={{
+        display: 'block', textAlign: 'center', fontSize: '0.8rem', color: '#666',
+      }}>
+        Forgot password?
+      </Link>
     </form>
   );
 }
