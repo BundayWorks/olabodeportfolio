@@ -96,6 +96,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     bgColor: '#d4edda',
     visualType: 'window',
     layout: 'right',
+    image: { src: '/assets/CPay.jpeg', alt: 'CPay product launch', position: 'center center' },
   },
   {
     slug: 'amis',
