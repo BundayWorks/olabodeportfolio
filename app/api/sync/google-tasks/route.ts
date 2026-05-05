@@ -89,8 +89,9 @@ async function runSync(request: Request) {
   try {
     lists = await listTaskLists(accessToken!);
   } catch (e) {
+    const detail = e instanceof Error ? e.message : String(e);
     console.error('[sync/google-tasks] listTaskLists failed', e);
-    return NextResponse.json({ ok: false, error: 'list_lists_failed' }, { status: 500 });
+    return NextResponse.json({ ok: false, error: 'list_lists_failed', detail }, { status: 500 });
   }
 
   type Row = {

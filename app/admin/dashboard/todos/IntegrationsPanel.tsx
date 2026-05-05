@@ -37,7 +37,8 @@ export default function IntegrationsPanel({
         // Soft refresh so the server component re-fetches
         setTimeout(() => location.reload(), 700);
       } else {
-        setSyncMsg(`Sync failed: ${json.error ?? 'unknown'}`);
+        const detail = json.detail ? ` — ${String(json.detail).slice(0, 240)}` : '';
+        setSyncMsg(`Sync failed: ${json.error ?? 'unknown'}${detail}`);
       }
     } catch {
       setSyncMsg('Sync failed: network error');
