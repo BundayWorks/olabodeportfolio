@@ -199,7 +199,7 @@ export default function TodosClient({ initialTodos, commitments }: Props) {
           <div className="empty-state__text">
             {selectedDate ? `No todos for ${selectedDate === today ? 'today' : selectedDate}` : 'No todos match your filters.'}
           </div>
-          <div className="empty-state__sub">Tap "+ New todo" to add one.</div>
+          <div className="empty-state__sub">Tap &ldquo;+ New todo&rdquo; to add one.</div>
         </div>
       ) : (
         filtered.map(todo => (

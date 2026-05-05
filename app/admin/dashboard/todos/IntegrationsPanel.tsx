@@ -39,7 +39,7 @@ export default function IntegrationsPanel({
       } else {
         setSyncMsg(`Sync failed: ${json.error ?? 'unknown'}`);
       }
-    } catch (e) {
+    } catch {
       setSyncMsg('Sync failed: network error');
     } finally {
       setSyncing(false);
