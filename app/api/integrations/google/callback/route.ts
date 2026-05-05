@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     ?.split('=')[1];
 
   const errorRedirect = (msg: string) =>
-    NextResponse.redirect(new URL(`/admin/dashboard/todos?gerr=${encodeURIComponent(msg)}`, url.origin));
+    NextResponse.redirect(new URL(`/admin/dashboard/integrations?gerr=${encodeURIComponent(msg)}`, url.origin));
 
   if (!code) return errorRedirect('missing_code');
   if (!state || state !== expectedState) return errorRedirect('state_mismatch');
@@ -68,7 +68,7 @@ export async function GET(request: Request) {
     return errorRedirect('storage_failed');
   }
 
-  const res = NextResponse.redirect(new URL('/admin/dashboard/todos?gconnected=1', url.origin));
+  const res = NextResponse.redirect(new URL('/admin/dashboard/integrations?gconnected=1', url.origin));
   res.cookies.set('g_oauth_state', '', { path: '/', maxAge: 0 });
   return res;
 }

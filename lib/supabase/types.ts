@@ -151,6 +151,7 @@ export type Database = {
           synced_at: string;
           created_at: string;
           updated_at: string;
+          imported_todo_id: string | null;
         };
         Insert: {
           id?: string;
@@ -168,6 +169,7 @@ export type Database = {
           synced_at?: string;
           created_at?: string;
           updated_at?: string;
+          imported_todo_id?: string | null;
         };
         Update: {
           id?: string;
@@ -185,6 +187,7 @@ export type Database = {
           synced_at?: string;
           created_at?: string;
           updated_at?: string;
+          imported_todo_id?: string | null;
         };
       };
       achievements: {

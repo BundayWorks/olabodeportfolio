@@ -9,6 +9,7 @@ const navItems = [
   { href: '/admin/dashboard/todos', label: 'Todos', icon: '✅' },
   { href: '/admin/dashboard/achievements', label: 'Achievements', icon: '🏆' },
   { href: '/admin/dashboard/commitments', label: 'Commitments', icon: '🗂️' },
+  { href: '/admin/dashboard/integrations', label: 'Integrations', icon: '🔌' },
   { href: '/admin/dashboard/reports', label: 'Reports', icon: '📊' },
 ];
 

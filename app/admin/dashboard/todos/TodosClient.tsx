@@ -1,15 +1,19 @@
 'use client';
 import { useState, useTransition } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import type { Commitment, Project, TodoWithRelations } from '@/lib/supabase/types';
+import type { Commitment, ExternalTodo, Project, TodoWithRelations } from '@/lib/supabase/types';
+import SyncedTab from './SyncedTab';
 
 type CommitmentWithProjects = Commitment & { projects: Project[] };
 type Scope = 'day' | 'week';
 type StatusFilter = 'open' | 'completed' | 'all';
+type ActiveTab = 'mine' | 'synced';
 
 interface Props {
   initialTodos: TodoWithRelations[];
   commitments: CommitmentWithProjects[];
+  externalTodos: ExternalTodo[];
+  initialTab: ActiveTab;
 }
 
 const emptyForm = {
@@ -34,7 +38,8 @@ function isoDate(d: Date) {
   return d.toISOString().split('T')[0];
 }
 
-export default function TodosClient({ initialTodos, commitments }: Props) {
+export default function TodosClient({ initialTodos, commitments, externalTodos, initialTab }: Props) {
+  const [activeTab, setActiveTab] = useState<ActiveTab>(initialTab);
   const [todos, setTodos] = useState(initialTodos);
   const [form, setForm] = useState(emptyForm);
   const [showSheet, setShowSheet] = useState(false);
@@ -125,6 +130,8 @@ export default function TodosClient({ initialTodos, commitments }: Props) {
   const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const monthLabel = weekDays[3].toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
+  const syncedCount = externalTodos.length;
+
   return (
     <div className="admin-page">
       <div className="admin-page-header">
@@ -132,11 +139,58 @@ export default function TodosClient({ initialTodos, commitments }: Props) {
           <h1>Todos</h1>
           <p>Plan your day and week across commitments.</p>
         </div>
-        <button className="btn btn-primary" onClick={() => setShowSheet(true)}>
-          + New todo
+        {activeTab === 'mine' && (
+          <button className="btn btn-primary" onClick={() => setShowSheet(true)}>
+            + New todo
+          </button>
+        )}
+      </div>
+
+      {/* Tabs */}
+      <div style={{ display: 'flex', gap: '0.4rem', marginBottom: '1rem', borderBottom: '1px solid var(--a-border)' }}>
+        <button
+          onClick={() => setActiveTab('mine')}
+          style={{
+            padding: '0.65rem 1rem', border: 'none', background: 'none',
+            fontSize: '0.85rem', fontWeight: 600, cursor: 'pointer',
+            color: activeTab === 'mine' ? 'var(--a-text)' : 'var(--a-text3)',
+            borderBottom: activeTab === 'mine' ? '2px solid var(--a-text)' : '2px solid transparent',
+            marginBottom: -1, fontFamily: 'inherit',
+          }}
+        >
+          My todos
+        </button>
+        <button
+          onClick={() => setActiveTab('synced')}
+          style={{
+            padding: '0.65rem 1rem', border: 'none', background: 'none',
+            fontSize: '0.85rem', fontWeight: 600, cursor: 'pointer',
+            color: activeTab === 'synced' ? 'var(--a-text)' : 'var(--a-text3)',
+            borderBottom: activeTab === 'synced' ? '2px solid var(--a-text)' : '2px solid transparent',
+            marginBottom: -1, fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: '0.4rem',
+          }}
+        >
+          Synced
+          {syncedCount > 0 && (
+            <span style={{
+              fontSize: '0.68rem', fontWeight: 700, padding: '0.1rem 0.45rem',
+              borderRadius: 999, background: 'var(--a-blue)', color: '#fff',
+            }}>
+              {syncedCount}
+            </span>
+          )}
         </button>
       </div>
 
+      {activeTab === 'synced' && (
+        <SyncedTab
+          externalTodos={externalTodos}
+          commitments={commitments}
+        />
+      )}
+
+      {activeTab === 'mine' && (
+        <>
       {/* Week calendar */}
       <div className="week-calendar">
         <div className="week-calendar__header">
@@ -317,6 +371,8 @@ export default function TodosClient({ initialTodos, commitments }: Props) {
             </div>
           </div>
         </div>
+      )}
+        </>
       )}
     </div>
   );

@@ -33,5 +33,5 @@ export async function POST(request: Request) {
     .eq('user_id', user.id)
     .eq('source', 'google_tasks');
 
-  return NextResponse.redirect(new URL('/admin/dashboard/todos?gdisconnected=1', request.url), 303);
+  return NextResponse.redirect(new URL('/admin/dashboard/integrations?gdisconnected=1', request.url), 303);
 }

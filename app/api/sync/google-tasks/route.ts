@@ -138,7 +138,8 @@ async function runSync(request: Request) {
     }
   }
 
-  // 4. Upsert
+  // 4. Upsert. We deliberately do NOT include imported_todo_id in the payload,
+  // so existing imported rows keep their link.
   let upserted = 0;
   if (rows.length > 0) {
     const { error: upErr, count } = await admin
@@ -151,7 +152,9 @@ async function runSync(request: Request) {
     upserted = count ?? rows.length;
   }
 
-  // 5. Delete tasks that no longer exist in Google (cleanup)
+  // 5. Delete tasks that no longer exist in Google — but never touch rows
+  // that have been imported into the manual todo list. Imported rows stay
+  // intact so the user keeps their work even if the Google task is removed.
   if (rows.length > 0) {
     const externalIds = rows.map(r => r.external_id);
     await admin
@@ -159,14 +162,16 @@ async function runSync(request: Request) {
       .delete()
       .eq('user_id', userId)
       .eq('source', 'google_tasks')
+      .is('imported_todo_id', null)
       .not('external_id', 'in', `(${externalIds.map(id => `"${id}"`).join(',')})`);
   } else {
-    // No tasks at all — clear everything for this source/user
+    // No tasks at all — clear non-imported rows only
     await admin
       .from('external_todos')
       .delete()
       .eq('user_id', userId)
-      .eq('source', 'google_tasks');
+      .eq('source', 'google_tasks')
+      .is('imported_todo_id', null);
   }
 
   await admin
