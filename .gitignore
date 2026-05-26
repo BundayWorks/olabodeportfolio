@@ -39,3 +39,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# personal / business documents — never commit
+*.pptx
+*.docx
+*.xlsx
+~$*
+~WRL*.tmp
+proposal_diagrams/
+
+# generated CV outputs at repo root (script output, not source)
+/Olabode_Ogunfuye_CV*.docx
+/Olabode_Ogunfuye_CV*.pdf
+
+# allow only the published CV PDF in public/assets (used by View CV modal)
+!public/assets/Olabode_Ogunfuye_CV.pdf
+!public/assets/*.pdf
