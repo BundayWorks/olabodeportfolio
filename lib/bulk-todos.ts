@@ -36,6 +36,38 @@ export interface ValidatedRow {
 }
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+// US-style M/D/YYYY or MM/DD/YYYY (Excel's default on a US locale). Single or
+// double digit month/day both accepted.
+const US_DATE = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+
+function pad2(n: number) { return n < 10 ? `0${n}` : `${n}`; }
+
+// Returns ISO date string, or null if input isn't a date we understand.
+// Sets `converted` flag when the input wasn't ISO but we managed to coerce it.
+function parseDate(raw: string): { iso: string | null; converted: boolean; reason?: string } {
+  if (ISO_DATE.test(raw)) {
+    // Light sanity check — Date() will accept things like 2026-13-45 silently
+    const [y, m, d] = raw.split('-').map(Number);
+    if (m < 1 || m > 12 || d < 1 || d > 31) {
+      return { iso: null, converted: false, reason: `Out-of-range month or day in "${raw}"` };
+    }
+    return { iso: raw, converted: false };
+  }
+  const us = US_DATE.exec(raw);
+  if (us) {
+    const month = Number(us[1]);
+    const day = Number(us[2]);
+    const year = Number(us[3]);
+    if (month < 1 || month > 12 || day < 1 || day > 31) {
+      return { iso: null, converted: false, reason: `Out-of-range month or day in "${raw}"` };
+    }
+    return { iso: `${year}-${pad2(month)}-${pad2(day)}`, converted: true };
+  }
+  return {
+    iso: null, converted: false,
+    reason: `Unrecognised date format "${raw}" — use YYYY-MM-DD or M/D/YYYY`,
+  };
+}
 
 // Damerau-Levenshtein-lite — fine for short strings like commitment names.
 function distance(a: string, b: string): number {
@@ -95,10 +127,14 @@ export function validateBulkRow(
   const dueRaw = (row.due_date ?? '').trim();
   let due_date: string | null = null;
   if (dueRaw) {
-    if (!ISO_DATE.test(dueRaw)) {
-      result.errors.push(`Invalid due_date "${dueRaw}" — expected YYYY-MM-DD`);
+    const parsed = parseDate(dueRaw);
+    if (parsed.iso) {
+      due_date = parsed.iso;
+      if (parsed.converted) {
+        result.warnings.push(`Converted "${dueRaw}" → ${parsed.iso} (US format detected)`);
+      }
     } else {
-      due_date = dueRaw;
+      result.errors.push(parsed.reason ?? `Invalid due_date "${dueRaw}"`);
     }
   } else {
     due_date = todayIso;
