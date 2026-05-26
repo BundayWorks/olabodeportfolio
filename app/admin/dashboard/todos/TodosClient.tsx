@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/client';
 import type { Commitment, ExternalTodo, Project, TodoWithRelations } from '@/lib/supabase/types';
 import SyncedTab from './SyncedTab';
 import BulkUploadSheet from './BulkUploadSheet';
+import TodoDetailSheet from './TodoDetailSheet';
 
 type CommitmentWithProjects = Commitment & { projects: Project[] };
 type Scope = 'day' | 'week';
@@ -45,6 +46,7 @@ export default function TodosClient({ initialTodos, commitments, externalTodos, 
   const [form, setForm] = useState(emptyForm);
   const [showSheet, setShowSheet] = useState(false);
   const [showBulkSheet, setShowBulkSheet] = useState(false);
+  const [detailTodo, setDetailTodo] = useState<TodoWithRelations | null>(null);
   const [filterStatus, setFilterStatus] = useState<StatusFilter>('open');
   const [filterCommitment, setFilterCommitment] = useState('');
   const [selectedDate, setSelectedDate] = useState<string>(isoDate(new Date()));
@@ -270,8 +272,18 @@ export default function TodosClient({ initialTodos, commitments, externalTodos, 
               className="todo-checkbox"
               checked={todo.status === 'completed'}
               onChange={() => todo.status === 'completed' ? reopenTodo(todo.id) : completeTodo(todo)}
+              onClick={e => e.stopPropagation()}
             />
-            <div style={{ flex: 1, minWidth: 0 }}>
+            <button
+              type="button"
+              onClick={() => setDetailTodo(todo)}
+              style={{
+                flex: 1, minWidth: 0, textAlign: 'left',
+                background: 'none', border: 'none', padding: 0,
+                font: 'inherit', color: 'inherit', cursor: 'pointer',
+              }}
+              aria-label={`Open details for ${todo.title}`}
+            >
               <div className={`todo-title${todo.status === 'completed' ? ' strikethrough' : ''}`}>
                 {todo.title}
               </div>
@@ -294,7 +306,7 @@ export default function TodosClient({ initialTodos, commitments, externalTodos, 
               {todo.notes && (
                 <p style={{ fontSize: '0.78rem', color: 'var(--a-text3)', marginTop: '0.3rem', lineHeight: 1.5 }}>{todo.notes}</p>
               )}
-            </div>
+            </button>
             <div style={{ display: 'flex', gap: '0.15rem', flexShrink: 0 }}>
               {todo.status === 'completed' && (
                 <button onClick={() => convertToAchievement(todo)} className="btn-icon" title="Convert to achievement" style={{ fontSize: '1rem' }}>
@@ -322,6 +334,18 @@ export default function TodosClient({ initialTodos, commitments, externalTodos, 
           }))}
           onClose={() => setShowBulkSheet(false)}
           onImported={() => { setShowBulkSheet(false); startTransition(refresh); }}
+        />
+      )}
+
+      {/* Todo detail sheet */}
+      {detailTodo && (
+        <TodoDetailSheet
+          todo={detailTodo}
+          commitments={commitments}
+          onClose={() => setDetailTodo(null)}
+          onChanged={() => { startTransition(refresh); }}
+          onDeleted={() => { setDetailTodo(null); startTransition(refresh); }}
+          onArchived={() => { setDetailTodo(null); startTransition(refresh); }}
         />
       )}
 
