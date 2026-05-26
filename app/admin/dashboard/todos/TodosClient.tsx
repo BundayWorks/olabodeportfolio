@@ -3,6 +3,7 @@ import { useState, useTransition } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import type { Commitment, ExternalTodo, Project, TodoWithRelations } from '@/lib/supabase/types';
 import SyncedTab from './SyncedTab';
+import BulkUploadSheet from './BulkUploadSheet';
 
 type CommitmentWithProjects = Commitment & { projects: Project[] };
 type Scope = 'day' | 'week';
@@ -43,6 +44,7 @@ export default function TodosClient({ initialTodos, commitments, externalTodos, 
   const [todos, setTodos] = useState(initialTodos);
   const [form, setForm] = useState(emptyForm);
   const [showSheet, setShowSheet] = useState(false);
+  const [showBulkSheet, setShowBulkSheet] = useState(false);
   const [filterStatus, setFilterStatus] = useState<StatusFilter>('open');
   const [filterCommitment, setFilterCommitment] = useState('');
   const [selectedDate, setSelectedDate] = useState<string>(isoDate(new Date()));
@@ -140,9 +142,14 @@ export default function TodosClient({ initialTodos, commitments, externalTodos, 
           <p>Plan your day and week across commitments.</p>
         </div>
         {activeTab === 'mine' && (
-          <button className="btn btn-primary" onClick={() => setShowSheet(true)}>
-            + New todo
-          </button>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <button className="btn btn-secondary" onClick={() => setShowBulkSheet(true)}>
+              ↥ Bulk upload
+            </button>
+            <button className="btn btn-primary" onClick={() => setShowSheet(true)}>
+              + New todo
+            </button>
+          </div>
         )}
       </div>
 
@@ -304,6 +311,19 @@ export default function TodosClient({ initialTodos, commitments, externalTodos, 
 
       {/* FAB (mobile) */}
       <button className="btn-fab" onClick={() => setShowSheet(true)} aria-label="New todo">+</button>
+
+      {/* Bulk upload sheet */}
+      {showBulkSheet && (
+        <BulkUploadSheet
+          commitments={commitments.map(c => ({
+            id: c.id,
+            name: c.name,
+            projects: c.projects.map(p => ({ id: p.id, name: p.name })),
+          }))}
+          onClose={() => setShowBulkSheet(false)}
+          onImported={() => { setShowBulkSheet(false); startTransition(refresh); }}
+        />
+      )}
 
       {/* Sheet modal */}
       {showSheet && (
