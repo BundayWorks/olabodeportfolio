@@ -966,8 +966,10 @@ a.case-study__visual:hover { opacity: 0.85; }
   .case-study {
     grid-template-columns: 1fr;
   }
-  .case-study--right .case-study__copy,
-  .case-study--right .case-study__visual { order: unset; }
+  /* On mobile every card stacks visual-on-top, copy-below, regardless
+     of the desktop layout direction. */
+  .case-study--right .case-study__copy { order: 2; }
+  .case-study--right .case-study__visual { order: 1; }
   .case-study__visual { min-height: 240px; }
   .case-study__copy,
   .case-study--right .case-study__copy {
