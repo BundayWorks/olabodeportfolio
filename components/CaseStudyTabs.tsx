@@ -37,6 +37,20 @@ function renderBlock(block: ContentBlock, i: number) {
       </div>
     );
   }
+  if (block.type === 'image') {
+    return (
+      <figure key={i} className="cs-figure" style={block.aspectRatio ? { aspectRatio: block.aspectRatio } : undefined}>
+        <img
+          src={block.src}
+          alt={block.alt}
+          className="cs-figure__img"
+          style={block.position ? { objectPosition: block.position } : undefined}
+          loading="lazy"
+        />
+        {block.caption && <figcaption className="cs-figure__caption">{block.caption}</figcaption>}
+      </figure>
+    );
+  }
   return null;
 }
 

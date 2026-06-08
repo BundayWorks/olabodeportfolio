@@ -36,11 +36,21 @@ export interface OutcomeGridBlock {
   items: OutcomeItem[];
 }
 
+export interface ImageBlock {
+  type: 'image';
+  src: string;
+  alt: string;
+  caption?: string;
+  position?: string;       // CSS object-position, e.g. "center 30%"
+  aspectRatio?: string;    // CSS aspect-ratio, e.g. "16 / 10"
+}
+
 export type ContentBlock =
   | CalloutBlock
   | ParagraphBlock
   | InsightListBlock
-  | OutcomeGridBlock;
+  | OutcomeGridBlock
+  | ImageBlock;
 
 export interface Step {
   number: string;
@@ -85,6 +95,11 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     bgColor: '#0f2a3c',
     visualType: 'icons',
     layout: 'left',
+    image: {
+      src: '/assets/Pierflow Team WHX.jpeg.PNG',
+      alt: 'Pierflow team at World Health Expo Lagos 2026',
+      position: 'center 35%',
+    },
   },
   {
     slug: 'taxspire',
@@ -243,6 +258,12 @@ export const CASE_STUDIES: CaseStudy[] = [
         body: [
           { type: 'paragraph', html: 'The architecture only matters if partners can actually plug into it. I designed the HMS Integration API as a complete RESTful surface — versioned, OAuth 2.0-protected, fully documented — that an HMS partner like LinkHMS could integrate with in a single sprint.' },
           {
+            type: 'image',
+            src: '/assets/Pierflow Endoscope Booth.jpeg.PNG',
+            alt: 'Partner conversation at the GAR Medical Endoscope booth, WHX Lagos 2026',
+            caption: 'Live partnership conversation at the GAR Medical booth — every endpoint in the API started with someone telling us what they actually needed.',
+          },
+          {
             type: 'insightList',
             items: [
               { strong: 'OAuth 2.0 client credentials:', text: 'Every partner gets a client_id and client_secret. They exchange those for short-lived access tokens, scoped to the data they\'re allowed to read. Clean, standard, boring — exactly what good API security should be.' },
@@ -263,6 +284,12 @@ export const CASE_STUDIES: CaseStudy[] = [
         heading: "A platform doesn't grow on roadmaps. It grows on partnerships.",
         body: [
           { type: 'paragraph', html: 'World Health Expo Lagos 2026 was the most important week of Pierflow\'s commercial development to date. I treated it as a product launch — researched, scripted, and tracked end to end.' },
+          {
+            type: 'image',
+            src: '/assets/Pierflow SICURO Booth.jpeg.PNG',
+            alt: 'Pierflow team partnership meeting at the SICURO booth, WHX Lagos 2026',
+            caption: 'On the floor at WHX Lagos 2026 — the playbook said visit 50 companies. We left with active conversations from 10 of them.',
+          },
           {
             type: 'insightList',
               items: [
