@@ -77,6 +77,16 @@ export interface CaseStudyCard {
 
 export const CASE_STUDY_CARDS: CaseStudyCard[] = [
   {
+    slug: 'pierflow',
+    tag: 'Healthtech · API Platform · 0→1 · West Africa',
+    title: 'Building the connectivity layer for healthcare in Africa.',
+    description:
+      "Joined Pierflow as API Product Manager to architect an API-first, AI-native platform connecting hospitals, payers, suppliers, and patients across Nigeria and West Africa. Designed the Paper-to-Digital Engine (6,000 FHIR-ready records/day), the HMS Integration API, and an embedded insurance distribution model. Led partnership development at World Health Expo Lagos 2026 — opening active conversations with LinkHMS, Healthcare Federation of Nigeria, GE Healthcare, PharmAccess, and Africa CDC.",
+    bgColor: '#0f2a3c',
+    visualType: 'icons',
+    layout: 'left',
+  },
+  {
     slug: 'taxspire',
     tag: 'Regtech · Fintech · 0→1 · Nigeria',
     title: "Building Nigeria's first consumer tax platform — ₦25M+ revenue in month one.",
@@ -84,7 +94,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
       "Joined SpireCore as founding product lead to build Taxspire — Nigeria's first accessible, digital-first tax compliance platform for entrepreneurs and SMEs. In six months, with two engineers, we launched five product modules including tax profiling, business registration, invoicing, and advisory booking, generating ₦25M+ in our first month of trading.",
     bgColor: '#fce8d5',
     visualType: 'window',
-    layout: 'left',
+    layout: 'right',
     image: { src: '/assets/Taxspire Team.jpeg', alt: 'Taxspire team' },
   },
   {
@@ -95,7 +105,7 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
       "Led CPay from concept to live deployment across Liberia and Sierra Leone — expanding into five new government MDAs and generating over $1M in revenue. The real challenge wasn't the build; it was getting institutions to change how they moved money. I drove the adoption strategy alongside the product.",
     bgColor: '#d4edda',
     visualType: 'window',
-    layout: 'right',
+    layout: 'left',
     image: { src: '/assets/CPay.jpeg', alt: 'CPay product launch', position: 'center center' },
   },
   {
@@ -131,16 +141,6 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
     layout: 'right',
   },
   {
-    slug: 'isendapp',
-    tag: 'Logistics · 0→1 · Growth',
-    title: 'iSendApp: from product concept to 1,000 users without a marketing budget.',
-    description:
-      'Advised iSendApp as they transformed a logistics concept into a scalable business. Shaped the MVP scope, defined the customer journey from first touch to retained user, and co-designed the GTM strategy that drove their first 1,000 users — with meaningfully improved retention from day one.',
-    bgColor: '#e0f7fa',
-    visualType: 'icons',
-    layout: 'left',
-  },
-  {
     slug: 'bban',
     tag: 'Fintech · Fraud Prevention · Central Bank',
     title: "A $250K contract won by solving a problem nobody had named yet.",
@@ -148,12 +148,155 @@ export const CASE_STUDY_CARDS: CaseStudyCard[] = [
       "Identified a critical gap in CPay's payment validation layer and led the design of a BBAN Validator and Account Mapper feature — securing a $250,000 contract with the Central Bank of Liberia. This came from listening to users, not just managing requirements. Deep customer journey analysis revealed the root cause behind recurring payment errors and fraud incidents.",
     bgColor: '#f3e5f5',
     visualType: 'chart',
-    layout: 'right',
+    layout: 'left',
     image: { src: '/assets/CPay Brainstorming.jpeg', alt: 'CPay team brainstorming session' },
+  },
+  {
+    slug: 'isendapp',
+    tag: 'Logistics · 0→1 · Growth',
+    title: 'iSendApp: from product concept to 1,000 users without a marketing budget.',
+    description:
+      'Advised iSendApp as they transformed a logistics concept into a scalable business. Shaped the MVP scope, defined the customer journey from first touch to retained user, and co-designed the GTM strategy that drove their first 1,000 users — with meaningfully improved retention from day one.',
+    bgColor: '#e0f7fa',
+    visualType: 'icons',
+    layout: 'right',
   },
 ];
 
 export const CASE_STUDIES: CaseStudy[] = [
+  {
+    slug: 'pierflow',
+    tag: 'Healthtech · API Platform · 0→1 · Pierflow',
+    title:
+      'The connectivity layer for healthcare in Africa — building the API platform hospitals, payers, and patients can plug into.',
+    summary:
+      'Pierflow is an API-first, AI-native platform that connects hospitals, payers, suppliers, and patients into a single interoperable network across Nigeria and West Africa. I joined as API Product Manager — owning the API surface, the technical roadmap, and the partnership development that turns a platform into an ecosystem. In six months, I authored the Paper-to-Digital (P2D) Engine architecture capable of processing 6,000 FHIR-ready records per day, designed the HMS Integration API for partners like LinkHMS, defined the embedded insurance distribution model, and opened active conversations with 10+ institutional and technology partners at World Health Expo Lagos 2026.',
+    meta: [
+      { label: 'Role', value: 'API Product Manager' },
+      { label: 'Company', value: 'Pierflow · 2026–Present' },
+      { label: 'Focus Areas', value: 'API Product · FHIR R4 Interoperability · AI/ML Pipelines · Ecosystem Partnerships' },
+      { label: 'Outcome', value: '6,000 records/day · 10+ active partnerships · Africa CDC accelerator applied' },
+    ],
+    tabs: [
+      '01 · Context & Mandate',
+      '02 · Problem Framing',
+      '03 · Architecture',
+      '04 · Partner API',
+      '05 · Ecosystem & GTM',
+      '06 · Outcomes',
+    ],
+    steps: [
+      {
+        number: 'Step 01 — Context & Mandate',
+        heading: "An API-first platform needs a product manager who can think in endpoints, schemas, and ecosystems.",
+        body: [
+          { type: 'paragraph', html: 'Pierflow is positioned as <em>the connectivity layer for healthcare in Africa</em> — an interoperable network where hospitals, payers, suppliers, and patients can exchange data through a single, standardised API surface. Built in Lagos, designed for West Africa, modelled on the developer-platform DNA of companies like Stripe and Twilio.' },
+          { type: 'paragraph', html: 'The mandate when I joined was clear: every part of the product is an API. Every workflow has a developer-readable contract. Every partnership is a technical integration, not a slide deck. My job was to own that surface — the documentation, the schemas, the versioning, the developer experience — and translate it into commercial traction with the institutions that move African healthcare.' },
+          { type: 'callout', text: 'African healthcare is fragmented by design. Every hospital runs its own HMS. Every HMO uses its own claims schema. Every supplier has its own catalogue. Pierflow\'s thesis is that the network effect comes from standardising the connectivity, not the systems.' },
+          { type: 'paragraph', html: 'Core stack: FHIR R4, REST APIs, OAuth 2.0, multimodal LLMs (Claude and GPT-4o), OCR fallback chains, OpenCV-based image enhancement, NDPR-compliant data handling. The platform speaks the international standards (FHIR, ICD-10, LOINC, ATC) but is tuned to the realities of how data actually moves in Nigerian hospitals — paper, scans, WhatsApp, fragmented spreadsheets, and inconsistent identifiers.' },
+        ],
+        nav: { nextLabel: 'Next: Problem Framing →', nextStep: 1 },
+      },
+      {
+        number: 'Step 02 — Problem Framing',
+        heading: 'Paper records are the silent reason every HMS roll-out stalls.',
+        body: [
+          { type: 'paragraph', html: 'At World Health Expo Lagos 2026, I sat down with LinkHMS — one of Nigeria\'s leading hospital management systems. They had a clear sales pitch, real customers, and a working product. What they didn\'t have was a way to onboard new hospital clients quickly. Every prospect came with the same blocker: decades of paper records that nobody had the time or budget to digitise.' },
+          { type: 'paragraph', html: 'That conversation became the commission for what would become the Paper-to-Digital (P2D) Engine. The framing wasn\'t "build an OCR tool." It was "remove the single biggest barrier between Nigerian hospitals and modern HMS adoption." Same outcome, very different product.' },
+          {
+            type: 'insightList',
+            items: [
+              { strong: 'The hardware reality:', text: 'Hospitals scan documents through a wild mix of devices — eSCL/AirScan multifunction printers, TWAIN/WIA-driven flatbeds, ISIS-driven production scanners, plus scan-to-email, scan-to-folder, SFTP, and mobile phone capture. The ingestion layer had to meet every one of those, not pick a favourite.' },
+              { strong: 'The data reality:', text: 'Handwriting, poor lighting, faded ink, multi-language notes, inconsistent formats. No single OCR engine handles all of it well. The pipeline needed redundancy — multimodal LLMs as primary, OCR as fallback, human review as the safety net.' },
+              { strong: 'The compliance reality:', text: 'NDPR is non-negotiable. Every record processed had to be standardised, validated, and auditable end-to-end. No "we\'ll add governance later." The validation engine had to ship in v1.' },
+              { strong: 'The commercial reality:', text: 'LinkHMS needed a clean handoff — a versioned API contract, an Import Package, an acknowledgement flow. Not a Google Drive folder of CSVs. The product had to feel like Stripe sending webhooks, not like a consultancy delivering files.' },
+            ],
+          },
+          { type: 'callout', text: 'How might we turn decades of paper records into FHIR R4 patient bundles that an HMS partner can import in a single API call — with the confidence that the data is clean, standardised, and compliant?' },
+        ],
+        nav: { prevLabel: '← Context & Mandate', prevStep: 0, nextLabel: 'Next: Architecture →', nextStep: 2 },
+      },
+      {
+        number: 'Step 03 — Architecture',
+        heading: 'A 17-section technical specification for an AI-native digitisation pipeline.',
+        body: [
+          { type: 'paragraph', html: 'I authored the full P2D Engine architectural design document — 17 sections covering the scanner integration layer, the Pierflow Scan Agent, the Document Ingestion API, the AI pre-processing pipeline, the LLM extraction engine, the FHIR R4 standardisation layer, patient deduplication via a Master Patient Index, the validation engine, the human review portal, and the HMS Integration API.' },
+          {
+            type: 'insightList',
+            items: [
+              { strong: 'Scanner ingestion (the entry point):', text: 'Pierflow Scan Agent — a lightweight client that bridges all four major scanner protocols (eSCL/AirScan, TWAIN, WIA, ISIS) plus scan-to-email, scan-to-folder, SFTP, and mobile capture into a single uploader hitting the Document Ingestion API. One contract, many devices.' },
+              { strong: 'AI pre-processing:', text: 'OpenCV-based image enhancement (deskew, denoise, contrast normalisation), automatic document classification (lab result vs. prescription vs. discharge summary vs. clinical note), and region segmentation so the extraction stage knows what kind of structure it\'s reading.' },
+              { strong: 'LLM extraction engine:', text: 'Multimodal Claude and GPT-4o as primary extractors — they read the document visually, understand handwriting context, and emit structured JSON. Google Document AI and AWS Textract sit underneath as OCR fallbacks for low-confidence or cost-sensitive cases.' },
+              { strong: 'FHIR R4 standardisation:', text: 'Extracted data is mapped into 12 FHIR resource types — Patient, Practitioner, Encounter, Observation, Condition, MedicationRequest, AllergyIntolerance, Immunization, DiagnosticReport, Procedure, DocumentReference, and Bundle. Drug codes get standardised against ATC; diagnoses against ICD-10; labs against LOINC.' },
+              { strong: 'Patient deduplication (the Master Patient Index):', text: 'A separate index reconciles records that belong to the same patient across documents — fuzzy match on name, NIN, DOB, phone — and assigns a stable Pierflow Patient ID. Without this, "John Adebayo" appears as 12 different patients in the HMS. Critical for downstream interoperability.' },
+              { strong: 'Validation engine:', text: 'Schema validation, required-field checks, value-range checks (no diastolic pressure of 350), and confidence-score thresholding. Anything below confidence threshold gets routed to the Human Review Portal — a queue UI for trained reviewers to correct and approve in seconds.' },
+              { strong: 'Output:', text: 'Validated FHIR R4 patient bundles, ready for any standards-compliant HMS to consume. Target throughput: up to 6,000 records per day at production scale.' },
+            ],
+          },
+          { type: 'callout', text: 'The architectural decision I am most proud of: making LLMs the primary extractors and OCR the fallback — not the other way round. In African handwriting contexts, multimodal LLMs outperform OCR by a meaningful margin. Most teams default to OCR because that\'s how the field worked five years ago. We chose what works now.' },
+        ],
+        nav: { prevLabel: '← Problem Framing', prevStep: 1, nextLabel: 'Next: Partner API →', nextStep: 3 },
+      },
+      {
+        number: 'Step 04 — Partner API',
+        heading: 'The HMS Integration API: what it feels like to consume Pierflow as a developer.',
+        body: [
+          { type: 'paragraph', html: 'The architecture only matters if partners can actually plug into it. I designed the HMS Integration API as a complete RESTful surface — versioned, OAuth 2.0-protected, fully documented — that an HMS partner like LinkHMS could integrate with in a single sprint.' },
+          {
+            type: 'insightList',
+            items: [
+              { strong: 'OAuth 2.0 client credentials:', text: 'Every partner gets a client_id and client_secret. They exchange those for short-lived access tokens, scoped to the data they\'re allowed to read. Clean, standard, boring — exactly what good API security should be.' },
+              { strong: 'Provider and Patient endpoints:', text: '/providers and /patients support pagination, filtering, and incremental sync via updated_since. No surprises for anyone who has integrated a modern SaaS API.' },
+              { strong: 'FHIR R4 Bundle retrieval:', text: 'GET /patients/{id}/bundle returns a complete FHIR R4 Bundle for that patient — every observation, condition, medication, encounter — pre-standardised so the HMS doesn\'t need to do its own mapping.' },
+              { strong: 'Bulk Import Packages:', text: 'For large onboarding batches, partners can request an Import Package — a signed ZIP with a SHA-256 checksum containing thousands of FHIR Bundles plus a manifest. Designed for off-peak ingestion, with a download-once URL and a confirmation flow.' },
+              { strong: 'Acknowledgement flow:', text: 'After import, the partner POSTs an acknowledgement payload listing accepted, rejected, and partially-imported records. This closes the audit loop — Pierflow knows exactly what landed where, and we can trigger re-syncs for anything that failed.' },
+              { strong: 'Webhook notifications:', text: 'Three core webhook events — package.ready, patient.validated, batch.processing_complete — let the partner react in near-real-time rather than polling. Standard signature verification, retry-with-backoff, dead-letter queue. Same patterns Stripe and GitHub use, because they work.' },
+              { strong: 'Documentation discipline:', text: 'Every endpoint shipped with request/response schemas, error codes, rate limits, and a versioning strategy. The thing developers love about Stripe isn\'t the product. It\'s the docs.' },
+            ],
+          },
+          { type: 'callout', text: 'The test I held myself to throughout the design: could a competent backend engineer integrate this API on a Friday afternoon and have data flowing on Monday morning? If the answer was no, the design wasn\'t done.' },
+        ],
+        nav: { prevLabel: '← Architecture', prevStep: 2, nextLabel: 'Next: Ecosystem & GTM →', nextStep: 4 },
+      },
+      {
+        number: 'Step 05 — Ecosystem & GTM',
+        heading: "A platform doesn't grow on roadmaps. It grows on partnerships.",
+        body: [
+          { type: 'paragraph', html: 'World Health Expo Lagos 2026 was the most important week of Pierflow\'s commercial development to date. I treated it as a product launch — researched, scripted, and tracked end to end.' },
+          {
+            type: 'insightList',
+              items: [
+              { strong: 'The Partnership Playbook:', text: 'I researched 150+ exhibitors across six halls and produced a 50-company partnership playbook — a professionally designed Word document where each entry contained company research, alignment rationale, key talking points, a word-for-word pitch script, and a specific ask (LOI, pilot, MOU). Organised by hall for navigation efficiency, with a recommended visit order ranked by partnership density.' },
+              { strong: 'The CRM tracker:', text: 'A custom Excel-based partnership CRM tracker built from scratch — 23 columns covering contact info, tier, stage (nine stages from New Contact to Active Partner), discussion summary, pain point, value prop presented, reaction, next action, days-since-contact, and an overdue flag. Backed by a Pipeline Summary sheet with live counts and a Legend & Guide sheet for the team. Pre-loaded with 15 WHX contacts on day one.' },
+              { strong: 'Pitch deck and brand discipline:', text: 'A 9-slide deck rendered programmatically with pptxgenjs — design language extracted directly from pierflow.com (dark navy backgrounds, teal and green accents, terminal/code elements, developer-platform aesthetic in the spirit of Stripe and Twilio). Slides covered Cover, Problem, Vision, Solution, Platform, Records API deep-dive, Insurance Distribution, Market & Traction, and The Ask.' },
+              { strong: 'Insurance distribution strategy:', text: 'Beyond the Records platform, I designed Pierflow\'s embedded insurance distribution model — a three-step API product (Discover, Enroll, Activate) that places affordable HMO plans natively inside fintech and banking apps Nigerians already use daily. I presented this concept in our applications to Africa Health-Tech Accelerator (co-hosted by Africa CDC) and Accelerate Africa.' },
+            ],
+          },
+          { type: 'callout', text: "Active conversations opened at WHX Lagos 2026: LinkHMS (active P2D pilot scoping), Healthcare Federation of Nigeria, SYNLAB Nigeria, GE Healthcare West Africa, PharmAccess Foundation, SANeForce, Nigeria Health Watch (data partnership + Abuja Hackathon invite), West Africa Private Healthcare Federation, AMCE, and ABC Health." },
+        ],
+        nav: { prevLabel: '← Partner API', prevStep: 3, nextLabel: 'See Outcomes →', nextStep: 5 },
+      },
+      {
+        number: 'Step 06 — Outcomes',
+        heading: 'Six months. A platform architected. An ecosystem in motion.',
+        body: [
+          {
+            type: 'outcomeGrid',
+            items: [
+              { stat: '6,000', label: 'FHIR-ready patient records/day target throughput in the P2D Engine' },
+              { stat: '10+', label: 'Active partnership conversations opened at WHX Lagos 2026' },
+              { stat: '12', label: 'FHIR R4 resource types standardised across the data pipeline' },
+              { stat: '50', label: 'Partner playbook entries researched, scripted, and tracked end to end' },
+            ],
+          },
+          { type: 'paragraph', html: 'The headline outcome is the partnership pipeline. LinkHMS is actively scoping a Paper-to-Digital pilot for multiple hospital clients. Nigeria Health Watch has invited us to their Abuja Hackathon in July 2026 with a data partnership in active discussion. Conversations with Healthcare Federation of Nigeria, SYNLAB, GE Healthcare, PharmAccess, and SANeForce are all live. Our application to the Africa Health-Tech Accelerator — co-hosted by Africa CDC — is in.' },
+          { type: 'paragraph', html: 'The lesson from this work: in a market like African healthcare, building the right API is necessary but not sufficient. Distribution is the product. The Records API is real because LinkHMS has a real pain. The Insurance API is real because Nigerians already live inside fintech apps every day. Every endpoint should answer a question someone has already asked you in person.' },
+          { type: 'callout', text: "Next: launch the P2D pilot with LinkHMS, sign the first MOUs from the WHX pipeline, and ship the Insurance Distribution API to the first fintech partner. Pierflow's network effect is only beginning." },
+        ],
+        nav: { prevLabel: '← Ecosystem & GTM', prevStep: 4, backToWork: true },
+      },
+    ],
+  },
   {
     slug: 'taxspire',
     tag: 'Regtech · Fintech · 0→1 · SpireCore',
